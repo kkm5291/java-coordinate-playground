@@ -9,7 +9,7 @@ public class Avante extends Car{
     }
 
     @Override
-    double getDistancePerLiter() {
+    public double getDistancePerLiter() {
         return 15;
     }
 

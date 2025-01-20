@@ -1,6 +1,6 @@
 package fuel.domain;
 
-public abstract class Car {
+public abstract class Car implements VehicleInterface {
 
     protected int traveledDistance;
 
@@ -9,16 +9,6 @@ public abstract class Car {
     public Car(int travelDistance) {
         this.traveledDistance = travelDistance;
     }
-
-    /**
-     * 연비
-     */
-    abstract double getDistancePerLiter();
-
-    /**
-     * 차종 이름
-     */
-    public abstract String getBrand();
 
     /**
      * 주입해야 할 연료
