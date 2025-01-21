@@ -12,6 +12,9 @@ public class Coordinate {
     }
 
     public static Coordinate create(int x, int y) {
+        if (x < 0 || y < 0 || x > 24 || y > 24) {
+            throw new IllegalArgumentException("0 ~ 24 사이의 숫자만 입력이 가능합니다.");
+        }
         return new Coordinate(x, y);
     }
 
