@@ -4,7 +4,7 @@ public class Coordinate {
     public static final String INPUT_VALIDATION_EXCEPTION_MESSAGE = "0 ~ 24 사이의 숫자만 입력이 가능합니다.";
     public static final int MIN_VALUE = 0;
     public static final int MAX_VALUE = 24;
-
+    private static final int SQUARE_OF_TWO = 2;
 
     private final int x;
     private final int y;
@@ -20,7 +20,8 @@ public class Coordinate {
         }
     }
 
-    public static Coordinate create(int x, int y) {
+    public static Coordinate create(String inputCoordinate) {
+
         validateCoordinate(x, y);
         return new Coordinate(x, y);
     }
