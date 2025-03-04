@@ -1,5 +1,7 @@
 package calculator.model;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
+
 import java.util.Objects;
 
 public class Coordinate {
@@ -52,5 +54,13 @@ public class Coordinate {
     @Override
     public int hashCode() {
         return Objects.hash(x, y);
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }

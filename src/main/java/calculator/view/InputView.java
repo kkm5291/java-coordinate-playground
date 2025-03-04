@@ -22,7 +22,7 @@ public class InputView {
         return inputCoordinate(sc.nextLine());
     }
 
-    public static Line inputCoordinate(String input) {
+    private static Line inputCoordinate(String input) {
         try {
             input = input.replace(" ", "");
             checkPatternOf(input);

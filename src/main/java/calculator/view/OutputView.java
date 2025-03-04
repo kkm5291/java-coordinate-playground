@@ -1,0 +1,64 @@
+package calculator.view;
+
+import calculator.model.Coordinate;
+import calculator.model.Line;
+
+public class OutputView {
+    private static final String VERTICAL_AXIS = "|";
+    private static final String ORIGIN = "+";
+    private static final String HORIZONTAL_AXIS = "----";
+    private static final String MARK_OF_POINT = ".";
+    private static final String FOUR_BLANK = "    ";
+
+    public static void showCoordinatePlane(Line line) {
+        showVerticalNumbersWith(line);
+        showHorizontalAxis();
+        showHorizontalNumbers();
+    }
+
+    private static void showHorizontalNumbers() {
+        for (int x = Coordinate.MIN_VALUE; x <= Coordinate.MAX_VALUE; x++) {
+            showAxisNumber(x);
+        }
+        emptyLine();
+    }
+
+    private static void showHorizontalAxis() {
+        System.out.print(FOUR_BLANK + ORIGIN);
+        for (int x = Coordinate.MIN_VALUE; x <= Coordinate.MAX_VALUE; x++) {
+            System.out.print(HORIZONTAL_AXIS);
+        }
+        emptyLine();
+    }
+
+    private static void showVerticalNumbersWith(Line line) {
+        for (int y = Coordinate.MAX_VALUE; y > Coordinate.MIN_VALUE; y--) {
+            showAxisNumber(y);
+            System.out.print(VERTICAL_AXIS);
+            showPoint(line, y);
+            emptyLine();
+        }
+    }
+
+    private static void emptyLine() {
+        System.out.println();
+    }
+
+    private static void showPoint(Line line, int y) {
+        for (int x = Coordinate.MIN_VALUE; x < Coordinate.MAX_VALUE; x++) {
+            if (line.hasPoint(x, y)) {
+                System.out.printf("%4s", MARK_OF_POINT);
+                continue;
+            }
+            System.out.print(FOUR_BLANK);
+        }
+    }
+
+    private static void showAxisNumber(int index) {
+        if (index % 2 == 0) {
+            System.out.printf("%4d", index);
+            return;
+        }
+        System.out.print(FOUR_BLANK);
+    }
+}

@@ -14,4 +14,8 @@ public class Line {
     public double calculateDistance() {
         return point1.calculateDistanceTo(point2);
     }
+
+    public boolean hasPoint(int x, int y) {
+        return (point1.getX() == x && point1.getY() == y) || point2.getX() == x && point2.getY() == y;
+    }
 }
