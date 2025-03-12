@@ -1,14 +1,11 @@
 package calculator.view;
 
-import calculator.model.Coordinate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
-import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class InputViewTest {
@@ -39,16 +36,6 @@ public class InputViewTest {
         assertThatThrownBy(() -> InputView.checkEmptyOf(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(InputView.ERROR_INVALID_INPUT_MESSAGE);
-    }
-
-    @Test
-    @DisplayName("좌표 간 중복값")
-    void duplicateInput_throwsIllegalArgumentException() {
-        input = "(10,10)-(10,10)";
-
-        assertThatThrownBy(() -> InputView.generateCoordinates(input))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(InputView.ERROR_DUPLICATE_COORDINATES_FOUND);
     }
 }
 

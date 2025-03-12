@@ -1,10 +1,8 @@
 package calculator.model;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-
 import java.util.Objects;
 
-public class Coordinate {
+public class Point {
     public static final String INPUT_VALIDATION_EXCEPTION_MESSAGE = "0 ~ 24 사이의 숫자만 입력이 가능합니다.";
     public static final int MIN_VALUE = 0;
     public static final int MAX_VALUE = 24;
@@ -16,12 +14,12 @@ public class Coordinate {
     private final int x;
     private final int y;
 
-    private Coordinate(int x, int y) {
+    private Point(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    public static Coordinate of(String inputCoordinate) {
+    public static Point of(String inputCoordinate) {
         String replace = inputCoordinate.replace(OPEN_BRACKET, "")
                 .replace(CLOSE_BRACKET, "");
 
@@ -31,11 +29,11 @@ public class Coordinate {
         int y = Integer.parseInt(split[1].trim());
 
         validateCoordinate(x, y);
-        return new Coordinate(x, y);
+        return new Point(x, y);
     }
 
-    public double calculateDistanceTo(Coordinate coordinate) {
-        return Math.sqrt(Math.pow(this.x - coordinate.x, SQUARE_OF_TWO) + Math.pow(this.y - coordinate.y, SQUARE_OF_TWO));
+    public double calculateDistanceTo(Point point) {
+        return Math.sqrt(Math.pow(this.x - point.x, SQUARE_OF_TWO) + Math.pow(this.y - point.y, SQUARE_OF_TWO));
     }
 
     private static void validateCoordinate(int x, int y) {
@@ -47,7 +45,7 @@ public class Coordinate {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Coordinate that = (Coordinate) o;
+        Point that = (Point) o;
         return x == that.x && y == that.y;
     }
 
