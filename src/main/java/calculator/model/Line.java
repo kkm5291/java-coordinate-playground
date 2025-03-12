@@ -3,27 +3,24 @@ package calculator.model;
 import java.util.HashSet;
 import java.util.List;
 
-public class Line {
-    public static final String ERROR_DUPLICATE_POINTS_FOUND = "좌표에 중복값이 존재합니다.";
-
-    private Point point1;
-    private Point point2;
+public class Line extends AbstractFigure {
 
     public Line(List<Point> points) {
-        validateDuplicate(points);
-        this.point1 = points.get(0);
-        this.point2 = points.get(1);
+        super(points);
     }
 
-    public double calculateDistance() {
-        return point1.calculateDistanceTo(point2);
+    @Override
+    public double getArea() {
+        return getPoints().get(0).calculateDistanceTo(getPoints().get(1));
     }
 
+    @Override
     public boolean hasPoint(int x, int y) {
-        return (point1.getX() == x && point1.getY() == y) || point2.getX() == x && point2.getY() == y;
+        return (getPoints().get(0).getX() == x && getPoints().get(0).getY() == y) || getPoints().get(1).getX() == x && getPoints().get(1).getY() == y;
     }
-    
-    private void validateDuplicate(List<Point> points) {
+
+    @Override
+    public void validateDuplicate(List<Point> points) {
         if (points.size() != new HashSet<>(points).size()) {
             throw new IllegalArgumentException(ERROR_DUPLICATE_POINTS_FOUND);
         }

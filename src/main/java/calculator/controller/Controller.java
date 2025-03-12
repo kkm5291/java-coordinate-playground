@@ -9,6 +9,6 @@ public class Controller {
     public static void main(String[] args) {
         Line line = InputView.inputCoordinate();
         OutputView.showCoordinatePlane(line);
-        System.out.println(line.calculateDistance());
+        System.out.println(line.getArea());
     }
 }
