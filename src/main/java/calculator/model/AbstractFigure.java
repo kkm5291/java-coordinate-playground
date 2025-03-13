@@ -28,7 +28,11 @@ public abstract class AbstractFigure {
         }
     }
 
-    public abstract boolean hasPoint(int x, int y);
+    public boolean hasPoint(int x, int y) {
+        return getPoints().stream().anyMatch(
+                point -> point.isSame(x, y)
+        );
+    }
 
     public List<Point> getPoints() {
         return points;

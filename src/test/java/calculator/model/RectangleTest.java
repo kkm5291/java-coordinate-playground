@@ -70,6 +70,12 @@ class RectangleTest {
         assertThat(rectangle.getArea()).isEqualTo(196);
     }
 
+    @Test
+    void has_point_test() {
+        assertThat(rectangle.hasPoint(1, 1)).isTrue();
+        assertThat(rectangle.hasPoint(1, 13)).isFalse();
+    }
+
     @AfterEach
     void tearDown() {
         points = null;

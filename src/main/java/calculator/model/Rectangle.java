@@ -31,11 +31,6 @@ public class Rectangle extends AbstractFigure {
         return Math.abs(axisValues.get(0) - axisValues.get(1));
     }
 
-    @Override
-    public boolean hasPoint(int x, int y) {
-        return false;
-    }
-
     private void isRectangle(List<Point> points) {
         if (points.size() != 4) {
             throw new IllegalArgumentException(ERROR_NOT_RECTANGLE_POINTS);

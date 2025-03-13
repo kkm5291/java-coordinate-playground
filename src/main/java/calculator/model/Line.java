@@ -12,9 +12,4 @@ public class Line extends AbstractFigure {
     public double getArea() {
         return getPoints().get(0).calculateDistanceTo(getPoints().get(1));
     }
-
-    @Override
-    public boolean hasPoint(int x, int y) {
-        return (getPoints().get(0).getX() == x && getPoints().get(0).getY() == y) || getPoints().get(1).getX() == x && getPoints().get(1).getY() == y;
-    }
 }
