@@ -24,23 +24,24 @@ public class InputView {
     private static Line inputCoordinate(String input) {
         try {
             input = input.replace(" ", "");
+            checkEmptyOf(input);
             checkPatternOf(input);
-            return new Line(generateCoordinates(input));
+            return new Line(generatePoints(input));
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return inputCoordinate();
         }
     }
 
-    protected static List<Point> generateCoordinates(String input) {
+    protected static List<Point> generatePoints(String input) {
         String[] inputPoints = input.split(COORDINATE_SEPARATOR);
 
-        List<Point> coordinates = new ArrayList<>();
+        List<Point> points = new ArrayList<>();
 
         for (String coordinate : inputPoints) {
-            coordinates.add(Point.of(coordinate));
+            points.add(Point.of(coordinate));
         }
-        return coordinates;
+        return points;
     }
 
     protected static void checkEmptyOf(String input) {
