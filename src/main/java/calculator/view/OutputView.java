@@ -1,7 +1,7 @@
 package calculator.view;
 
+import calculator.model.AbstractFigure;
 import calculator.model.Point;
-import calculator.model.Line;
 
 public class OutputView {
     private static final String VERTICAL_AXIS = "|";
@@ -10,8 +10,8 @@ public class OutputView {
     private static final String MARK_OF_POINT = ".";
     private static final String FOUR_BLANK = "    ";
 
-    public static void showCoordinatePlane(Line line) {
-        showVerticalNumbersWith(line);
+    public static void showCoordinatePlane(AbstractFigure figure) {
+        showVerticalNumbersWith(figure);
         showHorizontalAxis();
         showHorizontalNumbers();
     }
@@ -31,11 +31,11 @@ public class OutputView {
         emptyLine();
     }
 
-    private static void showVerticalNumbersWith(Line line) {
+    private static void showVerticalNumbersWith(AbstractFigure figure) {
         for (int y = Point.MAX_VALUE; y > Point.MIN_VALUE; y--) {
             showAxisNumber(y);
             System.out.print(VERTICAL_AXIS);
-            showPoint(line, y);
+            showPoint(figure, y);
             emptyLine();
         }
     }
@@ -44,9 +44,9 @@ public class OutputView {
         System.out.println();
     }
 
-    private static void showPoint(Line line, int y) {
+    private static void showPoint(AbstractFigure figure, int y) {
         for (int x = Point.MIN_VALUE; x < Point.MAX_VALUE; x++) {
-            if (line.hasPoint(x, y)) {
+            if (figure.hasPoint(x, y)) {
                 System.out.printf("%4s", MARK_OF_POINT);
                 continue;
             }

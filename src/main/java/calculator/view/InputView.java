@@ -1,7 +1,6 @@
 package calculator.view;
 
-import calculator.model.Point;
-import calculator.model.Line;
+import calculator.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,17 +15,17 @@ public class InputView {
 
     private InputView() {}
 
-    public static Line inputCoordinate() {
+    public static AbstractFigure inputCoordinate() {
         System.out.println(INPUT_COORDINATE);
         return inputCoordinate(sc.nextLine());
     }
 
-    private static Line inputCoordinate(String input) {
+    private static AbstractFigure inputCoordinate(String input) {
         try {
             input = input.replace(" ", "");
             checkEmptyOf(input);
             checkPatternOf(input);
-            return new Line(generatePoints(input));
+            return FigureFactory.create(generatePoints(input));
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return inputCoordinate();
