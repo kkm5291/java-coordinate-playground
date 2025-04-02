@@ -51,7 +51,7 @@ public class InputView {
 
 
     protected static void checkPatternOf(String input) {
-        String regex = "\\(\\d+,\\d+\\)-\\(\\d+,\\d+\\)";
+        String regex = "\\([0-9]{1,2},[0-9]{1,2}\\)(-\\([0-9]{1,2},[0-9]{1,2}\\)){1,3}";
         if (!input.matches(regex)) {
             throw new IllegalArgumentException(ERROR_INVALID_INPUT_MESSAGE);
         }

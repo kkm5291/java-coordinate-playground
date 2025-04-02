@@ -6,6 +6,7 @@ import java.util.function.Function;
 
 public enum FigureTypeEnum {
     LINE(2, Line::new),
+    TRIANGLE(3, Triangle::new),
     RECTANGLE(4, Rectangle::new);
 
     public static final String ERROR_INVALID_POINT_NUMBER = "만들 수 없는 도형입니다.";
@@ -25,7 +26,7 @@ public enum FigureTypeEnum {
         return Arrays.stream(values())
                 .filter(figureTypeEnum -> figureTypeEnum.numberOfPoints == numberOfPoints)
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(ERROR_INVALID_POINT_NUMBER));    }
-
+                .orElseThrow(() -> new IllegalArgumentException(ERROR_INVALID_POINT_NUMBER));
+    }
 
 }
